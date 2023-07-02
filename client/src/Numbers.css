@@ -1,0 +1,19 @@
+.header button {
+ margin-left: 10px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.values {
+  margin-top: 20px;
+}
+
+.fetching {
+  height: 10px;
+}
+
+.form {
+  margin-top: 20px;
+}
