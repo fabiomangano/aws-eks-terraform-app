@@ -1,6 +1,7 @@
+// Database configuration
 const keys = require("./keys");
 
-// Express Application setup
+// Express app and middleware setup
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -28,23 +29,27 @@ pgClient.on("connect", (client) => {
 });
 
 // App endpoints
+// Get all values
 app.get("/values/all", async (req, res) => {
   const values = await pgClient.query("SELECT * FROM values");
   res.send(values);
 });
 
+// Create new value
 app.post("/values", async (req, res) => {
   if (!req.body.value) res.send({ working: false });
   pgClient.query("INSERT INTO values(number) VALUES($1)", [req.body.value]);
   res.send({ working: true });
 });
 
+// Delete a value
 app.delete("/values/:id", async (req, res) => {
   const id = req.params.id;
   await pgClient.query("DELETE FROM values WHERE id = $1", [id]);
   res.send({ success: true });
 });
 
+// Update a new value
 app.put("/values/:id", async (req, res) => {
   const id = req.params.id;
   const newValue = req.body.value;
@@ -55,6 +60,7 @@ app.put("/values/:id", async (req, res) => {
   res.send({ success: true });
 });
 
+// Run app on port 5000
 app.listen(5000, (err) => {
   console.log("Listening");
 });
