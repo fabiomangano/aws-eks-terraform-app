@@ -29,7 +29,7 @@ Per eseguire l'applicazione in locale tramite kubernetes:
 10. Creare quindi due secret tramite i seguenti comandi:
     a. kubectl create secret generic pgpassword --from-literal PGPASSWORD=12345test
     b. kubectl create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username=<username> --docker-password=<password> --docker-email=<email>
-11. Applicare l'ingress-nginx tramite il comando: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/aws/deploy.yaml
+11. Applicare l'ingress-nginx tramite il comando: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/cloud/deploy.yaml
 12. Posizionarsi nella root del progetto e creare quindi l'infrastruttura tramite il comando: "kubectl apply -f k8s"
 13. Dopo un po di tempo, navigando dal browser su localhost (porta default 80), si avrà l'applicazione up & running
 
